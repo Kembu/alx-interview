@@ -1,21 +1,18 @@
 #!/usr/bin/python3
 
 
-def can_open_all_boxes(lockboxes):
-    """
-    Determines if all the boxes can be opened.
+def can_unlock_all_boxes(boxes):
+    num_boxes = len(boxes)
+    visited = [False] * num_boxes
+    visited[0] = True
+    queue = [0]
 
-    Args:
-        lockboxes: A list of lists representing the lockboxes and their keys.
+    while queue:
+        current_box = queue.pop(0)
 
-    Returns:
-        True if all boxes can be opened, False otherwise.
-    """
-    keys = [0]  # Start with the first box as the initial key
-    for key in keys:
-        for box in lockboxes[key]:
-            if box not in keys and box < len(lockboxes):
-                keys.append(box)
-    if len(keys) == len(lockboxes):
-        return True
-    return False
+        for key in boxes[current_box]:
+            if key < num_boxes and not visited[key]:
+                visited[key] = True
+                queue.append(key)
+
+    return all(visited)

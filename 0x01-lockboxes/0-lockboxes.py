@@ -1,4 +1,4 @@
-uar/bin/env python3
+#!/usr/bin/env python3
 
 
 def can_open_all_boxes(lockboxes):

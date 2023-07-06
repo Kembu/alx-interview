@@ -1,3 +1,6 @@
+uar/bin/env python3
+
+
 def can_open_all_boxes(lockboxes):
     """
     Determines if all the boxes can be opened.

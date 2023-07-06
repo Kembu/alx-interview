@@ -1,18 +1,19 @@
 #!/usr/bin/python3
+"""Method to determine if all boxes can be opened."""
 
 
-def can_unlock_all_boxes(boxes):
-    num_boxes = len(boxes)
-    visited = [False] * num_boxes
-    visited[0] = True
-    queue = [0]
-
-    while queue:
-        current_box = queue.pop(0)
-
-        for key in boxes[current_box]:
-            if key < num_boxes and not visited[key]:
-                visited[key] = True
-                queue.append(key)
-
-    return all(visited)
+def canUnlockAll(boxes):
+    """Method that determines if all the boxes can be opened.
+    Args:
+        boxes: list of lists
+    Returns:
+        True if all boxes can be opened, else return False
+    """
+    keys = [0]
+    for key in keys:
+        for box in boxes[key]:
+            if box not in keys and box < len(boxes):
+                keys.append(box)
+    if len(keys) == len(boxes):
+        return True
+    return False

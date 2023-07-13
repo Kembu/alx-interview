@@ -18,15 +18,17 @@ def minOperations(n):
     If it is impossible to achieve the desired number of 'H'\
             characters, the function returns 0.
     """
-
-    num = n
-
-    if num < 2:
+    if n <= 1:
         return 0
-    elif num < 6 or num % 2 != 0:
-        return num
-    else:
-        x = num
-        while x % 2 == 0 and x > 5:
-            x = x // 2
-        return (num // x) + x
+
+    operations = 0
+    factor = 2
+
+    while n > 1:
+        if n % factor == 0:
+            operations += factor
+            n //= factor
+        else:
+            factor += 1
+
+    return operations

@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""
+A function that returns if\
+        UTF-8 is valid
+        """
 
 
 def validUTF8(data):

@@ -1,7 +1,20 @@
 #!/usr/bin/python3
+"""function that makes change
+"""
 
 
 def makeChange(coins, total):
+    """A function that determines the
+    fewest number of coins needed to
+    meet a given amount total
+    Args:
+        coins (_type_): a list of the values
+        of the coins in your possession
+        total (_type_): total amount
+    return:
+           fewest number of coins needed
+           to meet total
+    """
     if total <= 0:
         return 0
     final_value = 0

@@ -1,34 +1,62 @@
 #!/usr/bin/python3
-"""Island Perimeter
-"""
+'''0x09. Island Perimeter'''
 
 
 def island_perimeter(grid):
-    """returns the perimeter of the island described in grid
+    '''returns the perimeter of the island described in grid'''
+    counter = 0
+    grid_max = len(grid) - 1  # index of the last list in the grid
+    lst_max = len(grid[0]) - 1  # index of the last square in list
 
-    grid: a list of list of integers
+    for lst_idx, lst in enumerate(grid):
+        for land_idx, land in enumerate(lst):
+            if land == 1:
+                # left and right
+                if land_idx == 0:
+                    # left side
+                    counter += 1
 
-    return: perimeter of the island described in grid
-    """
+                    # right side
+                    if lst[land_idx + 1] == 0:
+                        counter += 1
+                elif land_idx == lst_max:
+                    # left side
+                    if lst[land_idx - 1] == 0:
+                        counter += 1
 
-    perimeter = 0
+                    # right side
+                    counter += 1
+                else:
+                    # left side
+                    if lst[land_idx - 1] == 0:
+                        counter += 1
 
-    for row in grid:
-        for cell in row:
-            if cell == 1:  # If it's land
-                perimeter += 4  # Count all four sides
+                    # right side
+                    if lst[land_idx + 1] == 0:
+                        counter += 1
 
-                # Check if there's land in the adjacent cells
-                # Subtract 1 for each adjacent land cell
-                c_index = row.index(cell)
-                r_index = grid.index(row)
-                if c_index > 0 and row[c_index - 1] == 1:
-                    perimeter -= 1
-                if c_index < len(row) - 1 and row[c_index + 1] == 1:
-                    perimeter -= 1
-                if r_index > 0 and grid[r_index - 1][c_index] == 1:
-                    perimeter -= 1
-                if r_index < len(grid) - 1 and grid[r_index + 1][c_index] == 1:
-                    perimeter -= 1
+                # top and down
+                if lst_idx == 0:
+                    # top side
+                    counter += 1
 
-    return perimeter
+                    # bottom side
+                    if grid[lst_idx + 1][land_idx] == 0:
+                        counter += 1
+                elif lst_idx == grid_max:
+                    # top side
+                    if grid[lst_idx - 1][land_idx] == 0:
+                        counter += 1
+
+                    # bottom side
+                    counter += 1
+                else:
+                    # top side
+                    if grid[lst_idx - 1][land_idx] == 0:
+                        counter += 1
+
+                    # bottom side
+                    if grid[lst_idx + 1][land_idx] == 0:
+                        counter += 1
+
+    return counter
